@@ -2,7 +2,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-    baseURL: 'http://localhost:3000', // Cambia esto si tu backend está en otra dirección
+    baseURL: 'http://localhost:10000', // Cambia esto si tu backend está en otra dirección
 });
 
 export const registerUser = (username, fullname, idnumber, addrress, pnumber, email, password) => {
