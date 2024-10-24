@@ -1,6 +1,8 @@
 import '../css/Register.css';
 import React, { useState } from 'react';
 import { registerUser } from '../API';
+import { useNavigate } from 'react-router-dom'; // Importar useNavigate
+
 
 const Register = () => {
     const [username, setUsername] = useState('');
@@ -11,6 +13,8 @@ const Register = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [message, setMessage] = useState('');
+    const navigate = useNavigate(); // Inicializar useNavigate
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -19,6 +23,8 @@ const Register = () => {
         try {
             const response = await registerUser(username, fullname, inumber, address, pnumber, email, password);
             setMessage(response.data.message);
+
+            navigate('/'); // Cambia esta ruta a la página de información
         } catch (error) {
             console.log(error);
             setMessage(error.response?.data.message || 'Fallo en el registro del usuario.');
